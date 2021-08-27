@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # add path to surface_tools
-export projectDir = $HOME/project/hcp
-export PATH=$PATH:$HOME/analysis/surface_tools/equivolumetric_surfaces/
+export projectDir=$HOME/project/hcp
+export PATH=$PATH:$HOME/projects/hcp/analysis/surface_tools/equivolumetric_surfaces/
 
 module load freesurfer/7.1
 
