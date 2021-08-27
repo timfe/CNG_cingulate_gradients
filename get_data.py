@@ -40,7 +40,8 @@ with open("fulllist.txt", 'w') as file:
 nec_files = {
             "anat": ["MyelinMap_MSMAll.32k_fs_LR.dscalar.nii", "T1wDividedByT2w.nii.gz"],
             "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg"],
-            "mri": ["orig.mgz"]
+            "mri": ["orig.mgz"],
+            "label": ["lh.cortex.label", "rh.cortex.label"]
             }
 
 
@@ -82,8 +83,12 @@ for subject in subjects:
                         dst = subjectDir + "/surfaces/" + subject + "/mri/" + os.path.basename(i)
                         shutil.copyfile(src, dst)
                         #print(i + " was copied to " + dst)
+                    elif key == "label":
+                        src= tmpDir + i
+                        dst = subjectDir + "/surfaces/" + subject + "/label/" + os.path.basename(i)
+                        shutil.copyfile(src, dst)
                     else:
-                        break#print(i + " was not copied!")
+                        print(i + " was not copied!")
         print("Files for subject: " + subject + " were successfully downloaded and transfered into BIDS structure.")
         # remove installed datasets in tmp folder
         os.chdir(tmpDir)   
