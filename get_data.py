@@ -105,12 +105,12 @@ if "surface_tools" not in os.listdir(analysisDir):
 else:
     print("surface_tools already downloaded.")
 
-os.chdir(analysisDir+"/scripts")
-if len(os.listdir(os.getcwd())) == 0:
-    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/01_constructSurfaces.sh >/dev/null 2>&1")
-    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/02_myelinMaptoSurf.sh >/dev/null 2>&1")
-    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/03_surf2mpc.m >/dev/null 2>&1")
-    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/build_mpc.m >/dev/null 2>&1")
-else:
-    print("Scripts already downloaded: " + os.getcwd())
+#os.chdir(analysisDir+"/scripts")
+#if len(os.listdir(os.getcwd())) == 0:
+#    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/01_constructSurfaces.sh >/dev/null 2>&1")
+#    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/02_myelinMaptoSurf.sh >/dev/null 2>&1")
+#    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/03_surf2mpc.m >/dev/null 2>&1")
+#    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/build_mpc.m >/dev/null 2>&1")
+#else:
+#    print("Scripts already downloaded: " + os.getcwd())
 
