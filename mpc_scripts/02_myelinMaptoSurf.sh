@@ -23,9 +23,9 @@ for thisDir in $tmpDir $warpDir ; do
         [[ ! -d "$thisDir" ]] && mkdir "$thisDir"
 done
 
-cp myeImageZip "$tmpDir"/T1wDividedByT2w.nii.gz
+cp "$myeImageZip" "$tmpDir"/T1wDividedByT2w.nii.gz
 gunzip $HOME/"$tmpDir"/T1wDividedByT2w.nii.gz
-myeImage = $HOME/"$tmpDir"/T1wDividedByT2w.nii
+myeImage=$HOME/"$tmpDir"/T1wDividedByT2w.nii
 
 export SUBJECTS_DIR="$baseDir"/"$subject"/surfaces
 
