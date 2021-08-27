@@ -14,7 +14,7 @@ function [sub_success] = surf2mpc(dataDir, sub, num_surf, parc_name)
 % parc_name		name of parcellation in annotation file (default is sjh)
 
 if nargin < 4
-	parc_name='sjh';
+	parc_name='aparc.a2009s';
 end
 if nargin < 3
 	num_surf=14;

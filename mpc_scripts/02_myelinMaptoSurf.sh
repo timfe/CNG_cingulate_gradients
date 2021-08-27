@@ -44,7 +44,7 @@ for num_surfs in 14; do
 		# find all equivolumetric surfaces and list by creation time
 		x=$(ls -t "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/${hemi}*)
 
-		for n in $(seq 1 1 "$num_surfs") ; do
+		for n in 14; do
 
 			# select a surfaces and copy to the freesurfer directory
 			which_surf=$(sed -n "$n"p <<< "$x")
