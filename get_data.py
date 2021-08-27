@@ -30,7 +30,7 @@ source = "///hcp-openaccess/HCP1200/"
 
 # Create Subject list
 os.chdir(analysisDir)
-subjects = ["100206"]
+subjects = ["100206, 100308"]
 with open("fulllist.txt", 'w') as file:
         for row in subjects:
             s = "".join(map(str, row))
@@ -107,7 +107,9 @@ os.chdir(analysisDir)
 if "surface_tools" not in os.listdir(analysisDir):
     Repo.clone_from("https://github.com/timfe/surface_tools", analysisDir + "/surface_tools")
 else:
-    print("surface_tools already downloaded.")
+    os.chdir(analysisDir + "/surface_tools")
+    os.system("git pull")
+    print("surface_tools already downloaded. Performed 'git pull'")
 
 #os.chdir(analysisDir+"/scripts")
 #if len(os.listdir(os.getcwd())) == 0:
