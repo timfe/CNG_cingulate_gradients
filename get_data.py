@@ -14,7 +14,7 @@ from git import Repo
 
 
 # Build folder structure (according to BIDS)
-projectDir = os.path.expanduser('~') + "/hcp_test"
+projectDir = os.path.expanduser('~') + "/project/hcp"
 dataDir = projectDir + "/data"
 analysisDir = projectDir + "/analysis"
 tmpDir = projectDir + "/tmp/"
@@ -118,4 +118,3 @@ else:
 #    os.system("wget -N -L https://raw.githubusercontent.com/timfe/micaopen/master/MPC/scripts/build_mpc.m >/dev/null 2>&1")
 #else:
 #    print("Scripts already downloaded: " + os.getcwd())
-
