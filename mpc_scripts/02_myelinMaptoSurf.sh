@@ -7,7 +7,8 @@
 #
 # Set up variables
 # subject directory within BIDS structure
-subject="100206"
+input=$HOME/project/hcp/analysis/fulllist.txt
+while IFS= read -r sub ; do
 baseDir=$HOME/project/hcp/data
 gunzip $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
 myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
@@ -34,7 +35,7 @@ cd $HOME/project/hcp
 bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
 
 # Register to surface
-for num_surfs in 14; do
+for ((n = 14; i <= 14; i++)); do
 
 	for hemi in l r; do
 
@@ -44,7 +45,7 @@ for num_surfs in 14; do
 		# find all equivolumetric surfaces and list by creation time
 		x=$(ls -t "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/${hemi}*)
 
-		for n in 14; do
+		for ((n = 14; n <= 14; n++)); do
 
 			# select a surfaces and copy to the freesurfer directory
 			which_surf=$(sed -n "$n"p <<< "$x")
@@ -64,6 +65,7 @@ for num_surfs in 14; do
 
 	done
 
+done
 done
 rm -rf "$tmpdir"
 

@@ -30,7 +30,7 @@ source = "///hcp-openaccess/HCP1200/"
 
 # Create Subject list
 os.chdir(analysisDir)
-subjects = ["100206"]
+subjects = ["100206", "100307", "100408", "100610", "101006", "101107", "101309"]
 with open("fulllist.txt", 'w') as file:
         for row in subjects:
             s = "".join(map(str, row))

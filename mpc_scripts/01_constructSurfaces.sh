@@ -23,7 +23,7 @@ while IFS= read -r sub ; do
 
 		# best practice to construct multiple sets of surfaces, with a range of surface numbers for optimisation
 		
-		for num_surfs in 14; do
+		for ((num_surfs = 14; num_surfs <= 14; num_surfs++)); do
 
 			# set output directory and create directory if necessary
 			[[ ! -d "$outDir"/"$num_surfs"surfs ]] && mkdir -p "$outDir"/"$num_surfs"surfs
