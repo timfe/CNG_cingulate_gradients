@@ -40,7 +40,7 @@ with open("fulllist.txt", 'w') as file:
 nec_files = {
             "anat": ["MyelinMap_MSMAll.32k_fs_LR.dscalar.nii", "T1wDividedByT2w.nii.gz"],
             "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg"],
-            "mri": ["orig.mgz"],
+            "mri": ["orig.mgz", "brainmask"],
             "label": ["lh.cortex.label", "rh.cortex.label"]
             }
 
