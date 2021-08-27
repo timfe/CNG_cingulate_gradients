@@ -1,9 +1,7 @@
 # CNG_cingulate_gradients
 
-[Script to get all necessary Data](get_data.py)
-
-get_data.py creates BIDS structure and downloads all user chosen files for user chosen subjets.
-Needs the the following inputs:
+[get_data.py](get_data.py) creates BIDS structure and downloads all user chosen files for user chosen subjets.
+Needs the following inputs:
 1. subject names (var: subjects)
 2. necessary files (var: nec_files)
 
