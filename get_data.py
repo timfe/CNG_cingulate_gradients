@@ -40,7 +40,7 @@ with open("fulllist.txt", 'w') as file:
 nec_files = {
             "anat": ["MyelinMap_MSMAll.32k_fs_LR.dscalar.nii", "T1wDividedByT2w.nii.gz"],
             "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg"],
-            "mri": ["orig.mgz", "brainmask"],
+            "mri": ["orig.mgz", "brainmask.mgz"],
             "label": ["lh.cortex.label", "rh.cortex.label"]
             }
 
@@ -67,7 +67,7 @@ for subject in subjects:
             for filename in files:
                 for i in glob.glob("**/*"+filename, recursive=True):
                     dl.get(tmpDir + i, dataset=subject)
-                    #print(i + " was downloaded.")
+                    print(i + " was downloaded.")
                     if key == "anat":
                         src= tmpDir + i
                         dst = subjectDir + "/anat/" + os.path.basename(i)

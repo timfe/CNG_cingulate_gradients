@@ -8,9 +8,9 @@
 # Set up variables
 # subject directory within BIDS structure
 subject="100206"
-baseDir=$HOME/project/hcp/data/
-#gunzip $HOME/project/hcp/data/anat/T1wDividedByT2w.nii.gz
-myeImage=$HOME/project/hcp/data/$subject/anat/T1wDividedByT2w.nii
+baseDir=$HOME/project/hcp/data
+gunzip $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
+myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
 rhAnnot=$HOME/project/CNG_cingulate_gradients/rh.aparc.a2009s.annot
@@ -18,14 +18,14 @@ rhAnnot=$HOME/project/CNG_cingulate_gradients/rh.aparc.a2009s.annot
 # set up and make necessary subfolders
 
 
-tmpDir="$baseDir"/$subject/tmpProcessingMyelin
-warpDir="$baseDir"/$subject/xfms
+tmpDir="$baseDir"/"$subject"/tmpProcessingMyelin
+warpDir="$baseDir"/"$subject"/xfms
 for thisDir in $tmpDir $warpDir ; do
         [[ ! -d "$thisDir" ]] && mkdir "$thisDir"
 done
 
 
-myeImage=$HOME/project/hcp/data/$subject/anat/T1wDividedByT2w.nii
+myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 export SUBJECTS_DIR="$baseDir"/"$subject"/surfaces
 
