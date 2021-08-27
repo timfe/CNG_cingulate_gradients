@@ -8,20 +8,26 @@
 # Set up variables
 # subject directory within BIDS structure
 
-baseDir=$HOME/hcp/data/
-myeImage=$HOME/hcp/data/anat/"T1wDividedByT2w.nii.gz"
-lhAnnot=/MPC/parcellations/lh.sjh.annot
-rhAnnot=/MPC/parcellations/rh.sjh.annot
+baseDir=$HOME/project/hcp/data/
+
+myeImageZip=$HOME/project/hcp/data/anat/"T1wDividedByT2w.nii.gz"
+lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
+rhAnnot=$HOME/project/CNG_cingulate_gradients/rh.aparc.a2009s.annot
 
 # set up and make necessary subfolders
-tmpDir="$baseDir"/tmpProcessingMyelin
-warpDir="$baseDir"/xfms
+subject="100206"
+
+tmpDir="$baseDir"/$subject/tmpProcessingMyelin
+warpDir="$baseDir"/$subject/xfms
 for thisDir in $tmpDir $warpDir ; do
         [[ ! -d "$thisDir" ]] && mkdir "$thisDir"
 done
 
-subject=$(basename "$baseDir")
-export SUBJECTS_DIR="$baseDir"/surfaces
+cp myeImageZip "$tmpDir"/T1wDividedByT2w.nii.gz
+gunzip $HOME/"$tmpDir"/T1wDividedByT2w.nii.gz
+myeImage = $HOME/"$tmpDir"/T1wDividedByT2w.nii
+
+export SUBJECTS_DIR="$baseDir"/"$subject"/surfaces
 
 # Register to Freesurfer space
 bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
@@ -58,6 +64,7 @@ for num_surfs in 14; do
 	done
 
 done
+rm -rf "$tmpdir"
 
 # create symbolic link to fsaverage within the subject's directory
 ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
@@ -65,7 +72,7 @@ ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
 # map annotation to subject space
 mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
     --sval-annot $lhAnnot \
-    --tval       $SUBJECTS_DIR/"$subject"/label/lh.sjh.annot
+    --tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
 mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
     --sval-annot $rhAnnot \
-    --tval       $SUBJECTS_DIR/"$subject"/label/rh.sjh.annot
+    --tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
