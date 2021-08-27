@@ -1,4 +1,4 @@
-function [sub_success] = surf2mpc($HOME/project/hcp/data, "100206", 12, "aparc.a2009s")
+function [sub_success] = surf2mpc(dataDir, sub, num_surf, 'aparc.a2009s')
 %
 % This script can be used as a wrapper to run the function build_mpc, and 
 % thus construct microstructure profile covariance (MPC) matrices for a 
