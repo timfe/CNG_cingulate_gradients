@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # add path to surface_tools
-export projectDir=$HOME/project/hcp
 export PATH=$PATH:$HOME/project/hcp/analysis/surface_tools/equivolumetric_surfaces/
 
 # set up as overearching bids directory
-dataDir=projectDir/data
+dataDir=$HOME/project/hcp/data
 
 # change to your subject list
-$HOME/analysis/fulllist.txt | while IFS= read -r sub ; do
+input=$HOME/project/hcp/analysis/fulllist.txt
+while IFS= read -r sub ; do
 
     # Set up SUBJECTS_DIR for freesurfer based functions 
     # In this setup the freesurfer output is nested within 'surfaces' 
@@ -30,7 +30,7 @@ $HOME/analysis/fulllist.txt | while IFS= read -r sub ; do
 
 			for hemi in lh rh ; do
 
-				python generate_equivolumetric_surfaces.py \
+				python $HOME/project/hcp/analysis/surface_tools/equivolumetric_surfaces/generate_equivolumetric_surfaces.py \
 				"$dataDir"/"$sub"/surfaces/"$sub"/surf/"$hemi".pial \
 				"$dataDir"/"$sub"/surfaces/"$sub"/surf/"$hemi".white \
 				"$num_surfs" \
@@ -42,4 +42,4 @@ $HOME/analysis/fulllist.txt | while IFS= read -r sub ; do
 
 		done
 
-done
+done < $input

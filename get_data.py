@@ -96,7 +96,6 @@ for subject in subjects:
         print("tmp files for subject " + subject + " deleted. Datalad dataset removed. Files can be found in: " + subjectDir)
     else:
         print("Data for " + subject + " already exist in " + subjectDir)
-        continue
 
 
 # In[ ]:
@@ -106,7 +105,7 @@ for subject in subjects:
 
 os.chdir(analysisDir)
 if "surface_tools" not in os.listdir(analysisDir):
-    Repo.clone_from("https://github.com/kwagstyl/surface_tools", analysisDir + "/surface_tools")
+    Repo.clone_from("https://github.com/timfe/surface_tools", analysisDir + "/surface_tools")
 else:
     print("surface_tools already downloaded.")
 
