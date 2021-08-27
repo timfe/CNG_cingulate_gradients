@@ -41,13 +41,13 @@ while IFS= read -r subject ; do
 
 		for hemi in l r; do
 
-			rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs1.0.pial
-			rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs0.0.pial
+			#rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs1.0.pial
+			#rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs0.0.pial
 
 			# find all equivolumetric surfaces and list by creation time
 			x=$(ls -t "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/${hemi}*)
 
-			for ((n = 14; n <= 14; n++)); do
+			for ((n = 1; n <= 14; n++)); do
 
 				# select a surfaces and copy to the freesurfer directory
 				which_surf=$(sed -n "$n"p <<< "$x")
@@ -71,13 +71,13 @@ while IFS= read -r subject ; do
 	#rm -rf "$tmpdir"
 
 	# create symbolic link to fsaverage within the subject's directory
-	#ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
+	ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
 
 	# map annotation to subject space
-	#mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
-	#	--sval-annot $lhAnnot \
-	#	--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
-	#mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
-	#	--sval-annot $rhAnnot \
-	#	--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
+	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
+		--sval-annot $lhAnnot \
+		--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
+	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
+		--sval-annot $rhAnnot \
+		--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
 done < $input
