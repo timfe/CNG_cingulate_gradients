@@ -39,7 +39,7 @@ with open("fulllist.txt", 'w') as file:
 # define files to download with datalad get
 nec_files = {
             "anat": ["MyelinMap_MSMAll.32k_fs_LR.dscalar.nii", "T1wDividedByT2w.nii.gz"],
-            "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg"],
+            "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg", "lh.thickness", "rh.thickness"],
             "mri": ["orig.mgz", "brainmask.mgz"],
             "label": ["lh.cortex.label", "rh.cortex.label"]
             }

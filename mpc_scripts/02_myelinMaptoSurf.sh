@@ -29,6 +29,7 @@ myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 export SUBJECTS_DIR="$baseDir"/"$subject"/surfaces
 
+cd 
 # Register to Freesurfer space
 bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
 
