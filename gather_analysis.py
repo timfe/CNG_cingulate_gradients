@@ -25,9 +25,15 @@ myelin_files = [
     "8.mgh", "9.mgh", "10.mgh", "11.mgh", "12.mgh", "13.mgh", "14.mgh"
     ]
 
-        
+subjects = [
+   "101915", "102008", "102109", "102311", "102513",
+   "102614", "102715", "102816", "103010", "103111", "103212",
+   "100206", "100307", "100408", "100610", "101006", "101107", "101309", "101410"
+   ]
+
 projectDir = os.path.expanduser('~') + "/project/hcp/data/"
-for subject in os.listdir(projectDir):
+os.chdir(projectDir)
+for subject in subjects:
     os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/equivSurfs/" + str(num_surfs) + "surfs" + "/surfs_out", exist_ok=True)
     os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/surf", exist_ok=True)
     os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/label", exist_ok=True)
