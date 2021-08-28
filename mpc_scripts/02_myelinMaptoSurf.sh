@@ -10,9 +10,9 @@
 
 baseDir=$HOME/project/hcp/data
 input=$HOME/project/hcp/analysis/fulllist.txt
-while IFS= read -r subject ; do
+while IFS= read -r subject; do
 	
-	#gunzip $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
+	gunzip $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
 	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 	lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
@@ -28,13 +28,13 @@ while IFS= read -r subject ; do
 	done
 
 
-	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
+	myeImage=$HOME/project/hcp/data/$subject/anat/T1wDividedByT2w.nii
 
-	export SUBJECTS_DIR="$baseDir"/"$subject"/surfaces
+	export SUBJECTS_DIR="$baseDir"/$subject/surfaces
 
-	cd $HOME/project/hcp
+	#cd $HOME/project/hcp
 	# Register to Freesurfer space
-	#bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
+	bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
 
 	# Register to surface
 	for ((num_surfs = 14; num_surfs <= 14; num_surfs++)); do
@@ -68,16 +68,16 @@ while IFS= read -r subject ; do
 		done
 
 	done
-	#rm -rf "$tmpdir"
+		#rm -rf "$tmpdir"
 
-	# create symbolic link to fsaverage within the subject's directory
-	ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
+		# create symbolic link to fsaverage within the subject's directory
+		ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
 
-	# map annotation to subject space
-	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
-		--sval-annot $lhAnnot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
-	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
-		--sval-annot $rhAnnot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
+		# map annotation to subject space
+		mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
+			--sval-annot $lhAnnot \
+			--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
+		mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
+			--sval-annot $rhAnnot \
+			--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
 done < $input
