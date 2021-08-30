@@ -12,7 +12,7 @@ baseDir=$HOME/project/hcp/data
 input=$HOME/project/hcp/analysis/fulllist.txt
 while IFS= read -r subject; do
 	
-	gunzip $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
+	gunzip -c $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
 	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 	lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
