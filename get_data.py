@@ -72,6 +72,7 @@ def unique(list1):
 
 for subject in subjects:
     subjectDir = dataDir + "/" + subject    
+    os.makedirs(subjectDir, exist_ok=True)
     os.chdir(subjectDir)
     file_list = []
     files_downloaded = []
@@ -88,9 +89,10 @@ for subject in subjects:
     if len(file_list) == 0:
         print("All data for " + subject + " already exist in " + subjectDir)        
     else:
-        print("Files need to be downloaded. Doing now...")
+        print("Files need to be downloaded:")
+        print(file_list)
+        print("Doing now...")
         # make subject specific subfolders
-        os.makedirs(subjectDir, exist_ok=True)
         os.makedirs(subjectDir + "/anat/", exist_ok=True)
         os.makedirs(subjectDir + "/func/", exist_ok=True)
         os.makedirs(subjectDir + "/surfaces/" + subject, exist_ok=True)
