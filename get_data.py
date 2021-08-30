@@ -83,7 +83,8 @@ for subject in subjects:
     files_downloaded = unique(files_downloaded)
     for file in files_downloaded:
         if file in file_list and file in files_downloaded:
-            file_list.pop(file_list.index(file))
+            file_list.remove(file)
+    
     if len(file_list) == 0:
         print("All data for " + subject + " already exist in " + subjectDir)        
     else:
@@ -101,7 +102,7 @@ for subject in subjects:
         dl.install(source= source + subject, path=subject, recursive=True) 
 
         # get files still left in file_list
-        for filename in files:
+        for filename in file_list:
             for i in glob.glob("**/*"+filename, recursive=True):
                 dl.get(tmpDir + i, dataset=subject)
                 print(i + " was downloaded.")
@@ -142,7 +143,7 @@ for subject in subjects:
 os.chdir(analysisDir)
 if "surface_tools" not in os.listdir(analysisDir):
     installDir = analysisDir + "/surface_tools"
-    os.system(" git clone https://github.com/timfe/surface_tools ${installDir}")
+    os.system("git clone https://github.com/timfe/surface_tools ${installDir}")
 else:
     os.chdir(analysisDir + "/surface_tools")
     os.system("git pull")
