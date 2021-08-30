@@ -81,11 +81,9 @@ for subject in subjects:
             for i in glob.glob("**/*"+filename, recursive=True):
                 files_downloaded.append(os.path.basename(i))
     files_downloaded = unique(files_downloaded)
-    print(files_downloaded)
     for file in files_downloaded:
         if file in file_list and file in files_downloaded:
             file_list.pop(file_list.index(file))
-    print(file_list)
     if len(file_list) == 0:
         print("All data for " + subject + " already exist in " + subjectDir)        
     else:
@@ -143,7 +141,8 @@ for subject in subjects:
 
 os.chdir(analysisDir)
 if "surface_tools" not in os.listdir(analysisDir):
-    Repo.clone_from("https://github.com/timfe/surface_tools", analysisDir + "/surface_tools")
+    installDir = analysisDir + "/surface_tools"
+    os.system(" git clone https://github.com/timfe/surface_tools ${installDir}")
 else:
     os.chdir(analysisDir + "/surface_tools")
     os.system("git pull")
