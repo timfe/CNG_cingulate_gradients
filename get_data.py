@@ -108,22 +108,23 @@ for subject in subjects:
             for i in glob.glob("**/*"+filename, recursive=True):
                 dl.get(tmpDir + i, dataset=subject)
                 print(i + " was downloaded.")
-                if os.path.basename(os.path.normpath(i)) == "anat":
+                print(os.path.basename(os.path.dirname(tmpDir + i)))
+                if os.path.basename(os.path.dirname(tmpDir + i)) == "T1w":
                     src= tmpDir + i
                     dst = subjectDir + "/anat/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif os.path.basename(os.path.normpath(i)) == "surf":
+                elif os.path.basename(os.path.dirname(tmpDir + i)) == "surf":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/surf/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif os.path.basename(os.path.normpath(i)) == "mri":
+                elif os.path.basename(os.path.dirname(tmpDir + i)) == "mri":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/mri/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif os.path.basename(os.path.normpath(i)) == "label":
+                elif os.path.basename(os.path.dirname(tmpDir + i)) == "label":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/label/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
