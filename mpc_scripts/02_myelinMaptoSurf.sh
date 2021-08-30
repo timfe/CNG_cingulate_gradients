@@ -12,7 +12,7 @@ baseDir=$HOME/project/hcp/data
 input=$HOME/project/hcp/analysis/fulllist.txt
 while IFS= read -r subject; do
 	
-	gunzip -c $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz
+	gunzip -k $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz 
 	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 	lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
@@ -41,8 +41,8 @@ while IFS= read -r subject; do
 
 		for hemi in l r; do
 
-			#rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs1.0.pial
-			#rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs0.0.pial
+			rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs1.0.pial
+			rm -f "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/"$hemi"h_equiv_"$num_surfs"surfs0.0.pial
 
 			# find all equivolumetric surfaces and list by creation time
 			x=$(ls -t "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/${hemi}*)
