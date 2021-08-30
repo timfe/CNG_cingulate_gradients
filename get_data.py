@@ -108,7 +108,6 @@ for subject in subjects:
             for i in glob.glob("**/*"+filename, recursive=True):
                 dl.get(tmpDir + i, dataset=subject)
                 print(i + " was downloaded.")
-                print(os.path.basename(os.path.dirname(tmpDir + i)))
                 if os.path.basename(os.path.dirname(tmpDir + i)) == "T1w":
                     src= tmpDir + i
                     dst = subjectDir + "/anat/" + os.path.basename(i)
