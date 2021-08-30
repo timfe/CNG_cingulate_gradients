@@ -31,7 +31,7 @@ source = "///hcp-openaccess/HCP1200/" ## https://github.com/datalad-datasets/hum
 # Create Subject list
 os.chdir(analysisDir)
 
-sub_list = []
+sub_list = ["105216"]
 
 #["100206", "100307", "100408", "100610", "101006", "101107", "101309", "101410",
 #  "101915", "102008", "102109", "102311", "102513",

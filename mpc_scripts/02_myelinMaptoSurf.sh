@@ -47,21 +47,24 @@ while IFS= read -r subject; do
 			# find all equivolumetric surfaces and list by creation time
 			x=$(ls -t "$SUBJECTS_DIR"/equivSurfs/"$num_surfs"surfs/${hemi}*)
 
-			for ((n = 1; n <= 14; n++)); do
+			let "tot_surfs = "$num_surfs" - 2"
+			
+				for n in $(seq 1 1 $tot_surfs) ; do
 
-				# select a surfaces and copy to the freesurfer directory
-				which_surf=$(sed -n "$n"p <<< "$x")
-				cp "$which_surf" "$SUBJECTS_DIR"/"$subject"/surf/"$hemi"h."$n"by"$num_surfs"surf
+					# select a surfaces and copy to the freesurfer directory
+					which_surf=$(sed -n "$n"p <<< "$x")
+					cp "$which_surf" "$SUBJECTS_DIR"/"$subject"/surf/"$hemi"h."$n"by"$num_surfs"surf
 
-				# project intensity values from volume onto the surface
-				mri_vol2surf \
-					--mov "$myeImage" \
-					--reg "$warpDir"/"$subject"_mye2fs_bbr.lta \
-					--hemi "$hemi"h \
-					--out_type mgh \
-					--trgsubject "$subject" \
-					--out "$tmpDir"/"$hemi"h."$n".mgh \
-					--surf "$n"by"$num_surfs"surf
+					# project intensity values from volume onto the surface
+					mri_vol2surf \
+						--mov "$myeImage" \
+						--reg "$warpDir"/"$subject"_mye2fs_bbr.lta \
+						--hemi "$hemi"h \
+						--out_type mgh \
+						--interp trilinear \
+						--trgsubject "$subject" \
+						--out "$tmpDir"/"$hemi"h."$n".mgh \
+						--surf "$n"by"$num_surfs"surf
 
 			done
 
