@@ -106,22 +106,22 @@ for subject in subjects:
             for i in glob.glob("**/*"+filename, recursive=True):
                 dl.get(tmpDir + i, dataset=subject)
                 print(i + " was downloaded.")
-                if key == "anat":
+                if os.path.basename(os.path.normpath(i)) == "anat":
                     src= tmpDir + i
                     dst = subjectDir + "/anat/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif key == "surf":
+                elif os.path.basename(os.path.normpath(i)) == "surf":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/surf/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif key == "mri":
+                elif os.path.basename(os.path.normpath(i)) == "mri":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/mri/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
                     #print(i + " was copied to " + dst)
-                elif key == "label":
+                elif os.path.basename(os.path.normpath(i)) == "label":
                     src= tmpDir + i
                     dst = subjectDir + "/surfaces/" + subject + "/label/" + os.path.basename(i)
                     shutil.copyfile(src, dst)
