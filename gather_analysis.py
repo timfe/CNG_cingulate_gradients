@@ -2,6 +2,12 @@ import os
 import glob
 import shutil
 
+projectDir = os.path.expanduser('~') + "/project/hcp"
+dataDir = projectDir + "/data"
+analysisDir = projectDir + "/analysis"
+tmpDir = projectDir + "/tmp/"
+scriptsDir = analysisDir + "/scripts"
+
 num_surfs = 14
 
 pial_files = [
@@ -25,11 +31,29 @@ myelin_files = [
     "8.mgh", "9.mgh", "10.mgh", "11.mgh", "12.mgh", "13.mgh", "14.mgh"
     ]
 
-subjects = [
-    "100206", "100307", "100408", "100610", "101006", "101107", "101309", "101410"
-    "101915", "102008", "102109", "102311", "102513",
-    "102614", "102715", "102816", "103010", "103111", "103212",
-    ]
+os.chdir(analysisDir)
+
+sub_list = [] # optional
+
+#["100206", "100307", "100408", "100610", "101006", "101107", "101309", "101410",
+#  "101915", "102008", "102109", "102311", "102513",
+#  "102614", "102715", "102816", "103010", "103111", "103212",
+#  "103414", "103515", "103818", "104012", "104416", "104820", "105014", "105115", "105216"]
+
+if len(sub_list) > 0:
+    with open("fulllist.txt", 'w') as file:
+        for row in sub_list:
+            s = "".join(map(str, row))
+            file.write(s+'\n')
+
+subjects = []
+with open("fulllist.txt", 'r') as file:
+        subject = file.readlines()
+        for i in range(len(subject)):
+            subjects.append(subject[i].replace("\n", ""))
+
+
+print("Chosen subjects: " + str(subjects))
 
 projectDir = os.path.expanduser('~') + "/project/hcp/data/"
 os.chdir(projectDir)
