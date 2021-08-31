@@ -7,7 +7,6 @@ import datalad.api as dl
 import os
 import glob
 import shutil
-from git import Repo
 
 
 # In[ ]:
