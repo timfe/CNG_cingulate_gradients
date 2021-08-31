@@ -7,7 +7,6 @@ import datalad.api as dl
 import os
 import glob
 import shutil
-from git import Repo
 
 
 # In[ ]:
@@ -15,7 +14,7 @@ from git import Repo
 
 # Build folder structure (according to BIDS)
 projectDir = os.path.expanduser('~') + "/project/hcp"
-dataDir = projectDir + "/data"
+dataDir = projectDir + "/data/"
 analysisDir = projectDir + "/analysis"
 tmpDir = projectDir + "/tmp/"
 scriptsDir = analysisDir + "/scripts"
