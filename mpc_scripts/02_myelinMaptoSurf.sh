@@ -58,7 +58,7 @@ while IFS= read -r subject; do
 					# project intensity values from volume onto the surface
 					mri_vol2surf \
 						--mov "$myeImage" \
-						--regheader "$subject" \
+						--regheader  "$subject" \
 						--hemi "$hemi"h \
 						--out_type mgh \
 						--interp trilinear \
