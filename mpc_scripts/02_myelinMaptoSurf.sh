@@ -34,7 +34,7 @@ while IFS= read -r subject; do
 
 	#cd $HOME/project/hcp
 	# Register to Freesurfer space
-	bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
+	#bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
 
 	# Register to surface
 	for ((num_surfs = 14; num_surfs <= 14; num_surfs++)); do
@@ -58,7 +58,7 @@ while IFS= read -r subject; do
 					# project intensity values from volume onto the surface
 					mri_vol2surf \
 						--mov "$myeImage" \
-						--reg "$warpDir"/"$subject"_mye2fs_bbr.lta \
+						--regheader  "$subject" \
 						--hemi "$hemi"h \
 						--out_type mgh \
 						--interp trilinear \

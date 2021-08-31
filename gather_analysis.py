@@ -58,30 +58,30 @@ print("Chosen subjects: " + str(subjects))
 projectDir = os.path.expanduser('~') + "/project/hcp/data/"
 os.chdir(projectDir)
 for subject in subjects:
-    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/equivSurfs/" + str(num_surfs) + "surfs" + "/surfs_out", exist_ok=True)
-    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/surf", exist_ok=True)
-    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/label", exist_ok=True)
+    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "/surfaces/equivSurfs/" + str(num_surfs) + "surfs" + "/surfs_out", exist_ok=True)
+    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/surf", exist_ok=True)
+    os.makedirs("/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/label", exist_ok=True)
     for filename in surfs:
         os.chdir(projectDir + subject + "/surfaces/equivSurfs")
         for file in glob.glob("**/*"+filename, recursive=True):
             src = projectDir + subject + "/surfaces/equivSurfs/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/equivSurfs/" + file
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/equivSurfs/" + file
             shutil.copyfile(src, dst)
     for filename in myelin_files:
         os.chdir(projectDir + subject + "/tmpProcessingMyelin")
         for file in glob.glob("**/*"+filename, recursive=True):
             src = projectDir + subject + "/tmpProcessingMyelin/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/equivSurfs/" + str(num_surfs) + "surfs" + "/surfs_out/" + file
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/equivSurfs/" + str(num_surfs) + "surfs" + "/surfs_out/" + file
             shutil.copyfile(src, dst)
     for filename in annot_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject)
         for file in glob.glob("**/*"+filename, recursive=True):
             src = projectDir + subject + "/surfaces/" + subject + "/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/" + file 
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/" + file 
             shutil.copyfile(src, dst)
     for filename in pial_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject + "/surf/")
         for file in glob.glob("**/*"+filename, recursive=True):
             src = projectDir + subject + "/surfaces/" + subject + "/surf/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "_tim" + "/surfaces/" + subject + "/surf/" + file
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/surf/" + file
             shutil.copyfile(src, dst)
