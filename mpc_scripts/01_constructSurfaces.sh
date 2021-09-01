@@ -7,7 +7,7 @@
 dataDir=$HOME/project/hcp/data
 # change to your subject list
 input=$HOME/project/hcp/analysis/fulllist.txt
-while IFS= read -r sub ; do
+while IFS= read -r sub; do
 
     # Set up SUBJECTS_DIR for freesurfer based functions 
     # In this setup the freesurfer output is nested within 'surfaces' 
