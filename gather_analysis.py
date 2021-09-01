@@ -55,6 +55,7 @@ with open("fulllist.txt", 'r') as file:
 
 
 print("Chosen subjects: " + str(subjects))
+print("Copying to /data/group/cng/Projects/cingulate/ now...")
 
 projectDir = os.path.expanduser('~') + "/project/hcp/data/"
 os.chdir(projectDir)
@@ -86,3 +87,4 @@ for subject in subjects:
             src = projectDir + subject + "/surfaces/" + subject + "/surf/" + file 
             dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/surf/" + file
             shutil.copyfile(src, dst)
+    print(f"{subject} successfully copied to /data/group/cng/Projects/cingulate/.")
