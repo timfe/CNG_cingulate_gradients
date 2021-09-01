@@ -89,5 +89,12 @@ while IFS= read -r subject; do
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
 		--sval-annot $annot/rh.economo.annot \
 		--tval       $SUBJECTS_DIR/"$subject"/label/rh.economo.annot
+
+	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
+		--sval-annot $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot \
+		--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
+	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
+		--sval-annot $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot \
+		--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
 	
 done < $input
