@@ -1,14 +1,10 @@
 #!/bin/bash
-
 # activate freesurfer module
-module load freesurfer/7.1
-
+#module load freesurfer/7.1
 # add path to surface_tools
-export PATH=$PATH:$HOME/project/hcp/analysis/surface_tools/equivolumetric_surfaces/
-
+#export PATH=$PATH:$HOME/project/hcp/analysis/surface_tools/equivolumetric_surfaces/
 # set up as overearching bids directory
 dataDir=$HOME/project/hcp/data
-
 # change to your subject list
 input=$HOME/project/hcp/analysis/fulllist.txt
 while IFS= read -r sub ; do
