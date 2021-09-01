@@ -35,7 +35,7 @@ while IFS= read -r subject; do
 	#bbregister --s "$subject" --mov "$myeImage" --reg "$warpDir"/"$subject"_mye2fs_bbr.lta --init-fsl --t1
 
 	# Register to surface
-	for ((num_surfs = 14; num_surfs <= 14; num_surfs++)); do
+	for num_surfs in 14; do
 
 		for hemi in l r; do
 
