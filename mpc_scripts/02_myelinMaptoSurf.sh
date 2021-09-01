@@ -12,11 +12,12 @@ baseDir=$HOME/project/hcp/data
 input=$HOME/project/hcp/analysis/fulllist.txt
 while IFS= read -r subject; do
 	
-	gunzip -k $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz 
+	gunzip -f -k $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz 
 	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
 	# set up and make necessary subfolders
 
+	annot=$HOME/project/CNG_cingulate_gradients
 
 	tmpDir="$baseDir"/"$subject"/tmpProcessingMyelin
 	warpDir="$baseDir"/"$subject"/xfms
@@ -76,16 +77,17 @@ while IFS= read -r subject; do
 
 	# map annotation to subject space
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
-		--sval-annot $HOME/project/CNS_cingulate_gradients/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
+		--sval-annot $annot/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
 		--tval       $SUBJECTS_DIR/"$subject"/label/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
-		--sval-annot $HOME/project/CNS_cingulate_gradients/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
+		--sval-annot $annot/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
 		--tval       $SUBJECTS_DIR/"$subject"/label/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot
+
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
-		--sval-annot $HOME/project/CNS_cingulate_gradients/lh.economo.annot \
+		--sval-annot $annot/lh.economo.annot \
 		--tval       $SUBJECTS_DIR/"$subject"/label/lh.economo.annot
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
-		--sval-annot $HOME/project/CNS_cingulate_gradients/rh.economo.annot \
+		--sval-annot $annot/rh.economo.annot \
 		--tval       $SUBJECTS_DIR/"$subject"/label/rh.economo.annot
 	
 done < $input
