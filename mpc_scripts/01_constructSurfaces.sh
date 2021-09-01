@@ -17,8 +17,7 @@ while IFS= read -r sub; do
 		# checks whether the output directory exists and makes it if it doesn't
 		[[ ! -d "$outDir" ]] && mkdir -p "$outDir"
 		# best practice to construct multiple sets of surfaces, with a range of surface numbers for optimisation
-		for num_surfs in 14; 
-			do
+		for num_surfs in 14;do
 			# set output directory and create directory if necessary
 			[[ ! -d "$outDir"/"$num_surfs"surfs ]] && mkdir -p "$outDir"/"$num_surfs"surfs
 			for hemi in lh rh ; do
