@@ -57,7 +57,7 @@ nec_files = {
             "anat": ["T1wDividedByT2w.nii.gz"],
             "surf": ["lh.pial", "rh.pial", "lh.area.pial", "rh.area.pial", "lh.area", "rh.area", "lh.white", "rh.white", "lh.sphere.reg", "rh.sphere.reg", "lh.thickness", "rh.thickness"],
             "mri": ["orig.mgz", "brainmask.mgz"],
-            "label": ["lh.cortex.label", "rh.cortex.label"]
+            "label": ["lh.cortex.label", "rh.cortex.label", "lh.aparc.a2009s.annot", "rh.aparc.a2009s.annot"]
             }
 
 def unique(list1):

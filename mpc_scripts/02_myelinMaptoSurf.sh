@@ -15,9 +15,6 @@ while IFS= read -r subject; do
 	gunzip -k $HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii.gz 
 	myeImage=$HOME/project/hcp/data/"$subject"/anat/T1wDividedByT2w.nii
 
-	lhAnnot=$HOME/project/CNG_cingulate_gradients/lh.aparc.a2009s.annot
-	rhAnnot=$HOME/project/CNG_cingulate_gradients/rh.aparc.a2009s.annot
-
 	# set up and make necessary subfolders
 
 
@@ -71,16 +68,5 @@ while IFS= read -r subject; do
 		done
 
 	done
-		#rm -rf "$tmpdir"
-
-		# create symbolic link to fsaverage within the subject's directory
-		ln -s $FREESURFER_HOME/subjects/fsaverage $SUBJECTS_DIR
-
-		# map annotation to subject space
-		mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
-			--sval-annot $lhAnnot \
-			--tval       $SUBJECTS_DIR/"$subject"/label/lh.aparc.a2009s.annot
-		mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
-			--sval-annot $rhAnnot \
-			--tval       $SUBJECTS_DIR/"$subject"/label/rh.aparc.a2009s.annot
+	
 done < $input

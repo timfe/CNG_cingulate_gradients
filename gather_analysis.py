@@ -76,8 +76,8 @@ for subject in subjects:
     for filename in annot_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject)
         for file in glob.glob("**/*"+filename, recursive=True):
-            src = projectDir + subject + "/surfaces/" + subject + "/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/" + file 
+            src = projectDir + subject + "/surfaces/" + subject + "/label/" + file 
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/label/" + file 
             shutil.copyfile(src, dst)
     for filename in pial_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject + "/surf/")
