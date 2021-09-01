@@ -21,7 +21,8 @@ lst =[
     ]
 
 annot_files = [
-    "lh.aparc.a2009s.annot", "rh.aparc.a2009s.annot"
+    "lh.economo.annot", "rh.economo.annot", 
+    "lh.Schaefer2018_1000Parcels_7Networks_order-2.annot", "rh.Schaefer2018_1000Parcels_7Networks_order-2.annot"
     ]
 
 surfs = [".pial"]
@@ -76,8 +77,8 @@ for subject in subjects:
     for filename in annot_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject)
         for file in glob.glob("**/*"+filename, recursive=True):
-            src = projectDir + subject + "/surfaces/" + subject + "/label/" + file 
-            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/label/" + file 
+            src = projectDir + subject + "/surfaces/" + subject + "/" + file 
+            dst = "/data/group/cng/Projects/cingulate/" + subject + "/surfaces/" + subject + "/" + file 
             shutil.copyfile(src, dst)
     for filename in pial_files:
         os.chdir(projectDir + subject + "/surfaces/" + subject + "/surf/")
