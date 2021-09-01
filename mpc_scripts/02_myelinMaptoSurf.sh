@@ -77,15 +77,15 @@ while IFS= read -r subject; do
 	# map annotation to subject space
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
 		--sval-annot $HOME/project/CNS_cingulate_gradients/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot
+		--tval       $SUBJECTS_DIR/"$subject"/label/lh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
 		--sval-annot $HOME/project/CNS_cingulate_gradients/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot
+		--tval       $SUBJECTS_DIR/"$subject"/label/rh.Schaefer2018_1000Parcels_7Networks_order-2.annot \
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi lh \
 		--sval-annot $HOME/project/CNS_cingulate_gradients/lh.economo.annot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/lh.economo.annot
+		--tval       $SUBJECTS_DIR/"$subject"/label/lh.economo.annot \
 	mri_surf2surf --srcsubject fsaverage --trgsubject $subject --hemi rh \
 		--sval-annot $HOME/project/CNS_cingulate_gradients/rh.economo.annot \
-		--tval       $SUBJECTS_DIR/"$subject"/label/rh.economo.annot
+		--tval       $SUBJECTS_DIR/"$subject"/label/rh.economo.annot \
 	
 done < $input
