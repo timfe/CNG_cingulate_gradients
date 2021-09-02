@@ -10,7 +10,8 @@ module load freesurfer/7.1
 # load data from subjects that are in fulllist.txt
 python get_data.py
 
-# do the first 2 steps of MPC from the downloaded data (Originals from: https://github.com/MICA-MNI/micaopen/tree/master/MPC/scripts)
+# do the first 2 steps of MPC from the downloaded data (Originals from: 
+# https://github.com/MICA-MNI/micaopen/tree/master/MPC/scripts)
 bash ~/project/CNG_cingulate_gradients/mpc_scripts/01_constructSurfaces.sh
 bash ~/project/CNG_cingulate_gradients/mpc_scripts/02_myelinMaptoSurf.sh
 
