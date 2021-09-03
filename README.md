@@ -1,6 +1,7 @@
 # Cingulate Data Analysis
 
 © Build by: Tim Fellerhoff, Gerion Michael Reimann
+
 Most important work done by: 
 - https://github.com/MICA-MNI/micaopen/tree/master/MPC 
 - https://github.com/kwagstyl/surface_tools
