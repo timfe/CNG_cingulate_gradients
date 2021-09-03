@@ -89,6 +89,6 @@ More info on the scripts that are running in `run_all.sh` :
     microstructure profile covariance matrices.
 
 
-Furthermore the script downloads this forked git repo https://github.com/timfe/surface_tools and the scripts for MPC calculation from https://github.com/timfe/micaopen/tree/master/MPC/scripts (commented by default. Delete "#" to enable).
+Furthermore the script downloads this forked git repo https://github.com/timfe/surface_tools.
 
 
