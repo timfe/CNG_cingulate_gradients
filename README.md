@@ -35,8 +35,6 @@ $ cd project
 $ git clone [https://github.com/timfe/CNG_cingulate_gradients](https://github.com/timfe/CNG_cingulate_gradients)
 ```
 
-![Bildschirmfoto 2021-09-01 um 20.20.07.png](Cingulate%20Data%20Analysis%20143b9ec95bbb434592c60f7beb19edd7/Bildschirmfoto_2021-09-01_um_20.20.07.png)
-
 Note: If you want to make changes in the script (e.g. to change directories), it's recommended to *fork* it into your own GitHub repo.
 
 ## All in One
@@ -56,8 +54,6 @@ $ printf "100206\n100307\n100408" > ~/project/hcp/analysisfulllist.txt
 # Running data processing
 bash ~/project/CNG_cingulate_gradients/run_all.sh
 ```
-
-![Bildschirmfoto 2021-09-01 um 20.03.26.png](Cingulate%20Data%20Analysis%20143b9ec95bbb434592c60f7beb19edd7/Bildschirmfoto_2021-09-01_um_20.03.26.png)
 
 More info on the scripts that are running in `run_all.sh` :
 
